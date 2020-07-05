@@ -1,0 +1,20 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Search: {{term}}
+{% endblock %}
+
+{% block body %}
+    {% if q == "No Results Found" %}
+      <h2>{{q}}</h2>
+      <a href="{% url 'wiki:index' %}">Home</a>
+    {% else %}
+    <h1>Results for {{ term }}</h1>
+      <ul>
+        {% for item in q %}
+        <li><a href="wiki/{{item}}">{{item}}</a></li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+{% endblock %}
